@@ -27,14 +27,18 @@ namespace VendingMachineKata
 
         public double Cancel()
         {
-            var cashToReturn =  m_Cash;
+            if (m_IsEmpty) return 0;
+
+            var cashToReturn = m_Cash;
             m_Cash = 0;
             m_IsEmpty = true;
             return cashToReturn;
-        }
+         }
 
         public Vend Dispense()
         {
+            if (m_IsEmpty) return Vend.UnableToVend;
+
             if (m_HasEnoughCash)
             {
                 var changeToReturn = m_Cash - 40;
