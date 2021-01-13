@@ -1,14 +1,15 @@
-using NUnit.Framework;
-using System.Reflection.PortableExecutable;
-using System.Runtime.InteropServices.ComTypes;
+﻿using NUnit.Framework;
+using System;
+using System.Collections.Generic;
+using System.Text;
 using VendingMachineKata;
+using VendingMachineKata.StateMachinePattern;
 
-namespace VendingMachineKataTests
+namespace VendingMachineKataTests.StateMachinePattern
 {
     [TestFixture()]
-    public class VendingMachineBasicTests
+    public class VendingMachineTests
     {
-
         [Test()]
         public void Cancel_WhenCalledAfterAddingNoCash_ReturnsZero()
         {
@@ -18,8 +19,8 @@ namespace VendingMachineKataTests
         }
 
         [TestCase(new double[] { 5 }, 5)]
-        [TestCase(new double[] { 5 , 10}, 15)]
-        [TestCase(new double[] { 5 , 10, 20, 20}, 55)]
+        [TestCase(new double[] { 5, 10 }, 15)]
+        [TestCase(new double[] { 5, 10, 20, 20 }, 55)]
         public void Cancel_WhenCalledAfterAddingSomeCash_ReturnsAllCashAdded(double[] cashToAdd, double expectedResult)
         {
             var sut = CreateSut();
@@ -56,7 +57,7 @@ namespace VendingMachineKataTests
             var sut = CreateSut();
             sut.AddCash(100);
             sut.Cancel();
-            
+
             //now we can add some more cash and make sure that works
             sut.AddCash(200);
             Assert.That(sut.Cancel(), Is.EqualTo(200));
@@ -120,7 +121,7 @@ namespace VendingMachineKataTests
         public void Dispense_WhenCalledAfterASucessfulVend_ReturnsUnableToVendResult(double[] cashToAdd)
         {
             var sut = CreateSut();
-            foreach(var cash in cashToAdd)
+            foreach (var cash in cashToAdd)
             {
                 sut.AddCash(cash);
             }
@@ -146,10 +147,9 @@ namespace VendingMachineKataTests
             Assert.That(sut.Cancel(), Is.EqualTo(0));
         }
 
-        private VendingMachineBasic CreateSut()
+        private VendingMachine CreateSut()
         {
-            return new VendingMachineBasic();
+            return new VendingMachine();
         }
-
     }
 }
