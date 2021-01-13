@@ -4,21 +4,29 @@ using System.Text;
 
 namespace VendingMachineKata.StateMachinePattern
 {
-    public class EnoughCashVendingMachineState : VendingMachineState
+    public class VendingMachine
     {
-        public override VendingMachineState AddCash(double cash)
+        private VendingMachineState m_State;
+
+        public VendingMachine()
+        {
+
+        }
+
+        public void AddCash(double cash)
         {
             throw new NotImplementedException();
         }
 
-        public override CashAndState Cancel()
+        public double Cancel()
         {
             throw new NotImplementedException();
         }
 
-        public override VendResultAndState Dispense()
+        public Vend Dispense()
         {
             throw new NotImplementedException();
         }
+
     }
 }

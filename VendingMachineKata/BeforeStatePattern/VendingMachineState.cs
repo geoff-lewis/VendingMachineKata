@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace VendingMachineKata.Basic
+namespace VendingMachineKata.BeforeStatePattern
 {
     public enum VendingMachineState
     {

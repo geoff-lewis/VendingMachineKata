@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VendingMachineKata.Basic
+namespace VendingMachineKata.BeforeStatePattern
 {
     public class VendingMachine
     {

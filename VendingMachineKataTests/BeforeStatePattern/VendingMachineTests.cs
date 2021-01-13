@@ -2,9 +2,9 @@ using NUnit.Framework;
 using System.Reflection.PortableExecutable;
 using System.Runtime.InteropServices.ComTypes;
 using VendingMachineKata;
-using VendingMachineKata.Basic;
+using VendingMachineKata.BeforeStatePattern;
 
-namespace VendingMachineKataTests.Basic
+namespace VendingMachineKataTests.BeforeStatePattern
 {
     [TestFixture()]
     public class VendingMachineTests
@@ -147,9 +147,9 @@ namespace VendingMachineKataTests.Basic
             Assert.That(sut.Cancel(), Is.EqualTo(0));
         }
 
-        private VendingMachineKata.Basic.VendingMachine CreateSut()
+        private VendingMachineKata.BeforeStatePattern.VendingMachine CreateSut()
         {
-            return new VendingMachineKata.Basic.VendingMachine();
+            return new VendingMachineKata.BeforeStatePattern.VendingMachine();
         }
 
     }
